@@ -5,6 +5,7 @@ import (
 	"Soteria/pkg/log"
 	"fmt"
 	"github.com/urfave/cli/v2"
+	"os"
 )
 
 
@@ -14,7 +15,6 @@ func main() {
 		fmt.Println("Failed to initialize logger")
 		panic(err)
 	}
-	log.Trace("Initialized logger")
 
 	app := &cli.App{
 		Name: "Soteria cli",
@@ -26,11 +26,13 @@ func main() {
 			},
 		},
 		Copyright: "(c) 2021 Serenity at Argonaut Developments",
-		Usage: "Cli to interaface with Soteria",
+		Usage: "Cli to interface with Soteria",
 	}
 	app.EnableBashCompletion = true
 
 	scli := scli.CreateClic(log, app)
 	scli.RegisterCreateActions()
+
+	app.Run(os.Args)
 }
 
