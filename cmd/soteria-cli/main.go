@@ -16,7 +16,18 @@ func main() {
 	}
 	log.Trace("Initialized logger")
 
-	app := cli.NewApp()
+	app := &cli.App{
+		Name: "Soteria cli",
+		Version: "v0.0.1",
+		Authors: []*cli.Author {
+			&cli.Author{
+				Name: "Serenity",
+				Email: "support@argonaut.pw",
+			},
+		},
+		Copyright: "(c) 2021 Serenity at Argonaut Developments",
+		Usage: "Cli to interaface with Soteria",
+	}
 	app.EnableBashCompletion = true
 
 	scli := scli.CreateClic(log, app)
