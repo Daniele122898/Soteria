@@ -31,6 +31,7 @@ func main() {
 	app.EnableBashCompletion = true
 
 	scli := scli.CreateClic(log, app)
+	scli.RegisterTestCommands()
 	scli.RegisterCreateActions()
 
 	app.Run(os.Args)
